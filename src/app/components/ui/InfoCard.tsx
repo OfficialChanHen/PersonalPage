@@ -20,7 +20,7 @@ export default function InfoCard() {
 
     return(
         <div className="my-auto
-                        aspect-[6/4] w-1/3 sm:aspect-[5/3] sm:w-2/3 max-w-[500px] min-w-[300px]
+                        aspect-[6/4] w-1/3 sm:aspect-[5/3] sm:w-2/3 max-w-[500px] min-w-[300px] max-h-[80vh]
                         perspective-[1000px]">
           <div 
             className={`relative size-full text-center transition-transform duration-800 transform-3d ${isBackside && "rotate-y-180"}`}
