@@ -77,7 +77,7 @@ function CustomCard({title, img, desc, link}: project) {
             >
                 <Image src={img.imgOrigin} alt={desc} fill style={{objectFit: "cover"}}/>
             </div>
-            <div className="flex-1 flex flex-col justify-start items-center gap-2 p-5 bg-indigodye text-parchment text-center transition-colors transition-color transform duration-700 ease-in-out group-hover:bg-pictonblue">
+            <div className="flex flex-col w-full h-[200px] justify-start items-center gap-2 p-5 bg-indigodye text-parchment text-center transition-colors transition-color transform duration-700 ease-in-out group-hover:bg-pictonblue">
                 <span className="text-[1.5rem]"><u>{title}</u></span>
                 <span>{desc}</span>
             </div>

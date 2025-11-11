@@ -3,8 +3,8 @@
 import InfoCard from "@/app/components/ui/InfoCard";
 import Image from "next/image";
 import { useRef } from "react";
-import { MdOutlineKeyboardDoubleArrowDown, MdKeyboardDoubleArrowUp } from "react-icons/md";
 import ProjectSldier from "@/app/components/ui/ProjectSlider";
+import SectionButton from "@/app/components/SectionButton";
 
 export default function Home() {
   const cardRef = useRef<null | HTMLDivElement>(null);
@@ -28,32 +28,20 @@ export default function Home() {
       {/* Card Section (First Section) */}
       <div className="min-w-screen min-h-screen flex flex-col justify-end items-center" ref={cardRef}>
         <InfoCard/>
-        <div className="flex flex-col justify-center items-center mb-3 text-indigodye hover:text-honolulublue" onClick={scrollToProjects}>
-          <button>Projects</button>
-          <MdOutlineKeyboardDoubleArrowDown size={24}/>
-        </div>
+        <SectionButton up={false} label={"Projects"} imgSize={24} buttonAction={scrollToProjects}/>
       </div>
 
       {/* Projects Section (Second Section) */}
       <div className="min-w-screen min-h-screen flex flex-col justify-between items-center" ref={projectsRef}>
-        <div className="flex flex-col justify-center items-center mt-3 text-indigodye hover:text-honolulublue" onClick={scrollToCard}>
-          <MdKeyboardDoubleArrowUp size={24}/>
-          <button>Contact Card</button>
-        </div>
+        <SectionButton up={true} label={"Contact Card"} imgSize={24} buttonAction={scrollToCard}/>
         <ProjectSldier/>
-        <div className="flex flex-col justify-center items-center mb-3 text-indigodye hover:text-honolulublue" onClick={scrollToResume}>
-          <button>Resume</button>
-          <MdOutlineKeyboardDoubleArrowDown size={24}/>
-        </div>
+        <SectionButton up={false} label={"Resume"} imgSize={24} buttonAction={scrollToResume}/>
       </div>
 
       {/* Resume Section (Third Section) */}
       <div className="min-w-screen min-h-screen flex flex-col justify-center items-center">
-        <div className="flex flex-col justify-center items-center mt-3 mb-auto text-indigodye hover:text-honolulublue" onClick={scrollToProjects}>
-          <MdKeyboardDoubleArrowUp size={24}/>
-          <button>Projects</button>
-        </div>
-        <div className="relative w-[60vw] h-[70vh] max-w-[650px] mb-auto drop-shadow-xl/40" ref={resumeRef}>
+        <SectionButton up={true} label={"Resume"} imgSize={24} buttonAction={scrollToProjects}/>
+        <div className="relative w-[60vw] h-[70vh] max-w-[650px] my-auto drop-shadow-xl/40" ref={resumeRef}>
           <Image src="/Official-Resume.png" alt="Resume" fill/>
         </div>
       </div>
