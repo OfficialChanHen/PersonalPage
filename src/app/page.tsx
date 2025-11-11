@@ -24,23 +24,23 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col bg-parchment">
+    <div className="flex flex-col min-w-screen bg-parchment">
       {/* Card Section (First Section) */}
       <div className="min-w-screen min-h-screen flex flex-col justify-end items-center" ref={cardRef}>
         <InfoCard/>
-        <SectionButton up={false} label={"Projects"} imgSize={24} buttonAction={scrollToProjects}/>
+        <SectionButton up={false} label={"Projects"} buttonAction={scrollToProjects}/>
       </div>
 
       {/* Projects Section (Second Section) */}
       <div className="min-w-screen min-h-screen flex flex-col justify-between items-center" ref={projectsRef}>
-        <SectionButton up={true} label={"Contact Card"} imgSize={24} buttonAction={scrollToCard}/>
+        <SectionButton up={true} label={"Contact Card"} buttonAction={scrollToCard}/>
         <ProjectSldier/>
-        <SectionButton up={false} label={"Resume"} imgSize={24} buttonAction={scrollToResume}/>
+        <SectionButton up={false} label={"Resume"} buttonAction={scrollToResume}/>
       </div>
 
       {/* Resume Section (Third Section) */}
       <div className="min-w-screen min-h-screen flex flex-col justify-center items-center">
-        <SectionButton up={true} label={"Resume"} imgSize={24} buttonAction={scrollToProjects}/>
+        <SectionButton up={true} label={"Projects"} buttonAction={scrollToProjects}/>
         <div className="relative w-[60vw] h-[70vh] max-w-[650px] my-auto drop-shadow-xl/40" ref={resumeRef}>
           <Image src="/Official-Resume.png" alt="Resume" fill/>
         </div>

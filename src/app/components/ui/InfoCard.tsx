@@ -1,5 +1,6 @@
 "use client"
 
+import useResponsiveIconSize from "@/app/hooks/useResponsiveIconSize";
 import { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -10,38 +11,53 @@ export default function InfoCard() {
         setIsBackside(prev => !prev);
     }
 
+    const iconSize = useResponsiveIconSize({
+            base: 18,
+            sm: 20,
+            md: 22,
+            lg: 24,
+    });
+
     return(
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-125 h-75 perspective-[1000px]">
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                        aspect-[6/4] w-1/3 sm:aspect-[5/3] sm:w-2/3 max-w-[500px] min-w-[300px]
+                        perspective-[1000px]">
           <div 
             className={`relative size-full text-center transition-transform duration-800 transform-3d ${isBackside && "rotate-y-180"}`}
             onClick={handleRotation}
           >
             {/* Front side of card */}
             <div className="absolute flex flex-col justify-center items-center size-full p-3 [-webkit-backface-visibility:hidden] bg-[url('/card-background-2.png')] bg-cover bg-center bg-no-repeat rounded-lg drop-shadow-2xl/40">
-              <div className="flex flex-col justify-center items-center size-full py-2 border-3 rounded-lg border-parchment text-parchment text-shadow-md">
+              <div className="flex flex-col justify-center items-center size-full py-2 border-3 rounded-lg border-parchment text-parchment text-shadow">
                   <div className="flex-1 flex justify-center items-center">
-                    <span className="text-4xl text-center">Welcome to my <br/>Portfolio</span>
+                    <span className="text-2xl sm:text-3xl md:text-4xl text-center">Welcome to my <br/>Portfolio</span>
                   </div>
-                  <span>Tap the card for more info!</span>
+                  <span className="text-sm sm:text-md md:text-lg">Tap the card for more info!</span>
               </div>
             </div>
             {/* Back side of card */}
             <div className="absolute size-full p-3 [-webkit-backface-visibility:hidden] rotate-y-180 bg-indigodye rounded-lg text-parchment drop-shadow-2xl/40 text-left tracking-[0.4rem]">
-              <div className="flex flex-col justify-start items-baseline size-full p-10 border-3 rounded-lg border-parchment text-parchment">
+              <div className="flex flex-col justify-between items-baseline size-full p-4 sm:p-6 md:p-10 border-3 rounded-lg border-parchment text-xs sm:text-lg text-parchment">
                 <div className="flex w-full flex-row justify-between items-center">
+                  {/** Title and headshot */}
                   <div className="flex flex-col">
-                    <span className="text-3xl text-pictonblue">Chan Hen</span>
-                    <span className="text-lg">Software Engineer</span>
+                    <span className="text-sm sm:text-lg md:text-2xl text-pictonblue">Chan Hen</span>
+                    <span>Software Engineer</span>
                   </div>
-                  <div className="w-24 h-24 rounded-full border-2 border-parchment bg-[url('/headshot.jpg')] bg-cover bg-center"/>
+                  <div className="aspect-[1/1] w-1/4 rounded-full border-2 border-parchment bg-[url('/headshot.jpg')] bg-cover bg-center"/>
                 </div>
-                <span className="text-md mb-auto">(952)-994-5059<br/>Officialchanhen@gmail.com</span>
+                {/** Bottom Text */}
+                <div className="flex flex-col w-full">
+                  <span>(952)-994-5059</span>
+                  <span className="break-all">Officialchanhen@gmail.com</span>
+                </div>
+                {/** Icons */}
                 <div className="flex flex-row items-end gap-2 text-pictonblue">
                   <a href="https://github.com/OfficialChanHen"  onClick={e => e.stopPropagation()} target="_blank" rel="noopener noreferrer">
-                    <FaGithub size={24}/>
+                    <FaGithub size={iconSize}/>
                   </a>
                   <a href="https://www.linkedin.com/in/chan-hen-13727b233/"  onClick={e => e.stopPropagation()} target="_blank" rel="noopener noreferrer">
-                    <FaLinkedin size={24}/>
+                    <FaLinkedin size={iconSize}/>
                   </a>
                 </div>
               </div>
