@@ -40,9 +40,7 @@ export default function Home() {
           <MdKeyboardDoubleArrowUp size={24}/>
           <button>Contact Card</button>
         </div>
-        <div className="w-[90vw]">
-          <ProjectSldier/>
-        </div>
+        <ProjectSldier/>
         <div className="flex flex-col justify-center items-center mb-3 text-indigodye hover:text-honolulublue" onClick={scrollToResume}>
           <button>Resume</button>
           <MdOutlineKeyboardDoubleArrowDown size={24}/>
@@ -55,7 +53,7 @@ export default function Home() {
           <MdKeyboardDoubleArrowUp size={24}/>
           <button>Projects</button>
         </div>
-        <div className="relative w-[60vw] h-[70vh] max-w-[650px] mb-auto drop-shadow-2xl/40" ref={resumeRef}>
+        <div className="relative w-[60vw] h-[70vh] max-w-[650px] mb-auto drop-shadow-xl/40" ref={resumeRef}>
           <Image src="/Official-Resume.png" alt="Resume" fill/>
         </div>
       </div>
