@@ -19,7 +19,7 @@ export default function InfoCard() {
     });
 
     return(
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 
+        <div className="my-auto
                         aspect-[6/4] w-1/3 sm:aspect-[5/3] sm:w-2/3 max-w-[500px] min-w-[300px]
                         perspective-[1000px]">
           <div 
@@ -28,7 +28,7 @@ export default function InfoCard() {
           >
             {/* Front side of card */}
             <div className="absolute flex flex-col justify-center items-center size-full p-3 [-webkit-backface-visibility:hidden] bg-[url('/card-background.png')] bg-cover bg-center bg-no-repeat rounded-lg drop-shadow-2xl/40">
-              <div className="flex flex-col justify-center items-center size-full py-2 border-3 rounded-lg border-parchment text-parchment text-shadow-md">
+              <div className="flex flex-col justify-center items-center size-full py-2 border-3 rounded-lg border-parchment text-parchment text-shadow-md/30 tracking-[0.25rem]">
                   <div className="flex-1 flex justify-center items-center">
                     <span className="text-2xl sm:text-3xl md:text-4xl text-center">Welcome to my <br/>Portfolio</span>
                   </div>

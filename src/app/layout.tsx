@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { DM_Serif_Text } from "next/font/google";
+
+const dmSerifText = DM_Serif_Text({ 
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-dmserif',
+});
 
 export const metadata: Metadata = {
   title: "Chan's Portfolio",
@@ -14,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={dmSerifText.className}>
       <body>{children}</body>
     </html>
   );
