@@ -87,7 +87,7 @@ function CustomCard({title, img, desc, link}: project) {
 
 export default function ProjectSldier() {
     const settings = {
-        className: "w-[90vw] my-10",
+        className: "w-[90vw]",
         centerMode: true,
         dots: true,
         infinite: true,
