@@ -37,9 +37,9 @@ export default function InfoCard() {
             </div>
             {/* Back side of card */}
             <div className="absolute size-full p-3 [-webkit-backface-visibility:hidden] rotate-y-180 bg-indigodye rounded-lg text-parchment drop-shadow-2xl/40 text-left tracking-[0.4rem]">
-              <div className="flex flex-col justify-between items-baseline size-full p-4 sm:p-6 md:p-8 border-3 rounded-lg border-parchment text-parchment">
+              <div className="flex flex-col justify-between items-baseline size-full overflow-y-auto p-4 sm:p-6 md:p-8 border-3 rounded-lg border-parchment text-parchment">
+                {/** Title and headshot */}
                 <div className="flex w-full flex-row justify-between items-center">
-                  {/** Title and headshot */}
                   <div className="flex flex-col">
                     <span className="text-md sm:text-lg md:text-2xl text-pictonblue">Chan Hen</span>
                     <span className="text-xs sm:text-lg">Software Engineer</span>

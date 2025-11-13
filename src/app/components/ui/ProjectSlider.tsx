@@ -69,17 +69,17 @@ const projects: project[] = [
 function CustomCard({title, img, desc, link}: project) {
     return(
         <div 
-            className="group flex flex-col justify-center items-center mx-5 my-25 h-[60vh] rounded-lg drop-shadow-lg overflow-hidden transition-transform transform duration-700 ease-in-out hover:scale-110"
+            className="group flex flex-col justify-center items-center mx-5 h-[60vh] rounded-lg drop-shadow-lg overflow-hidden transition-transform transform duration-700 ease-in-out hover:scale-110"
         >
             <div 
-                className="relative flex-4 w-full h-auto"
+                className="relative flex-1 w-full h-auto"
                 onClick={() => window.open(`${link}`, '_blank', 'noopener noreferrer')}    
             >
                 <Image src={img.imgOrigin} alt={desc} fill style={{objectFit: "cover"}}/>
             </div>
             <div className="flex flex-col w-full h-[200px] justify-start items-center gap-2 p-5 bg-indigodye text-parchment text-center transition-colors transition-color transform duration-700 ease-in-out group-hover:bg-pictonblue">
-                <span className="text-[1.5rem]"><u>{title}</u></span>
-                <span>{desc}</span>
+                <span className="text-lg sm:text-xl"><u>{title}</u></span>
+                <span className="text-xs sm:text-md md:text-lg">{desc}</span>
             </div>
         </div>
     )
@@ -87,9 +87,8 @@ function CustomCard({title, img, desc, link}: project) {
 
 export default function ProjectSldier() {
     const settings = {
-        className: "w-[90vw]",
+        className: "w-[90vw] py-2",
         centerMode: true,
-        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
