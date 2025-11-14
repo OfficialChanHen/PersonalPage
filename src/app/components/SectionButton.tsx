@@ -20,7 +20,7 @@ export default function SectionButton({
     });
 
     return(
-        <div className={`z-999 flex flex-col justify-center items-center text-indigodye transition-colors duration-200 hover:text-honolulublue`} onClick={buttonAction}>
+        <div className={`flex flex-col justify-center items-center text-indigodye transition-colors duration-200 hover:text-honolulublue`} onClick={buttonAction}>
             {up && <MaterialIcon name="MdOutlineKeyboardDoubleArrowUp" size={iconSize} />}
             <button className="text-md sm:text-lg">{label}</button>
             {!up && <MaterialIcon name="MdOutlineKeyboardDoubleArrowDown" size={iconSize} />}

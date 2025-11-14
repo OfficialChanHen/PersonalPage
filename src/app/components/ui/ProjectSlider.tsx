@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Slider from "react-slick";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
+import useResponsiveIconSize from "@/app/hooks/useResponsiveIconSize";
 
 type project = {
     id: number,
@@ -23,7 +25,7 @@ const projects: project[] = [
             width: 2560,
             height: 1300,
         },
-        link: "https://officialchanhen.github.io/TOP-admin-dashboard/",
+        link: "https://top-admin-dashboard-officialchanhens-projects.vercel.app/",
         desc: "A clean portfolio-style homepage showcasing your GitHub repositories, project descriptions, and links, presented with a simple responsive layout.",
         color: "#FCF5C7",
     },
@@ -35,7 +37,7 @@ const projects: project[] = [
             width: 2560,
             height: 1301,
         },
-        link: "https://officialchanhen.github.io/TOP-signup-page/",
+        link: "https://top-signup-page-officialchanhens-projects.vercel.app/",
         desc: "A minimalist registration form that collects username, email, and password, with a submit button.",
         color: "linear-gradient(225deg, rgb(12, 30, 127) 0%, rgb(96, 40, 149) 40%, rgb(210, 39, 121) 80%, rgb(255, 0, 142) 100%)",
     },
@@ -47,7 +49,7 @@ const projects: project[] = [
             width: 700,
             height: 900,
         },
-        link: "https://officialchanhen.github.io/calculator/",
+        link: "https://calculator-officialchanhens-projects.vercel.app/",
         desc: "An interactive web app that performs basic arithmetic operations—addition, subtraction, multiplication, and division—with a clean, button-based interface.",
         color: "#ffffff",
     },
@@ -59,27 +61,43 @@ const projects: project[] = [
             width: 700,
             height: 900,
         },
-        link: "https://officialchanhen.github.io/sketch-pad/",
+        link: "https://sketch-pad-officialchanhens-projects.vercel.app/",
         desc: "A canvas-based drawing app where users can draw freehand lines using mouse or touch input, choose colors, and clear their sketches.",
         color: "#ffffff",
     },
 
 ]
 
+
+
 function CustomCard({title, img, desc, link}: project) {
+    const iconSize = useResponsiveIconSize({
+        base: 18,
+        sm: 20,
+        md: 22,
+        lg: 24,
+    });
+
     return(
         <div 
             className="group flex flex-col justify-center items-center mx-5 h-[60vh] rounded-lg drop-shadow-lg overflow-hidden transition-transform transform duration-700 ease-in-out hover:scale-110"
         >
-            <div 
-                className="relative flex-1 w-full h-auto"
-                onClick={() => window.open(`${link}`, '_blank', 'noopener noreferrer')}    
-            >
-                <Image src={img.imgOrigin} alt={desc} fill style={{objectFit: "cover"}}/>
+            <div className="relative flex-2 min-w-full">
+                <Image 
+                    src={img.imgOrigin} 
+                    alt={desc} fill 
+                    style={{objectFit: "cover"}} 
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
+                />
             </div>
-            <div className="flex flex-col w-full h-[200px] justify-start items-center gap-2 p-5 bg-indigodye text-parchment text-center transition-colors transition-color transform duration-700 ease-in-out group-hover:bg-pictonblue">
-                <span className="text-lg sm:text-xl"><u>{title}</u></span>
-                <span className="text-xs sm:text-md md:text-lg">{desc}</span>
+            <div className="flex flex-1 flex-col w-full justify-start items-center gap-2 p-5 bg-indigodye text-parchment transition-colors transition-color transform duration-700 ease-in-out group-hover:bg-pictonblue">
+                <span className="text-center text-lg sm:text-xl"><u>{title}</u></span>
+                <span className="text-left text-xs sm:text-md md:text-lg">{desc}</span>
+                <IoIosArrowDroprightCircle 
+                    className="self-end mt-auto" 
+                    size={iconSize} 
+                    onClick={() => window.open(`${link}`, '_blank', 'noopener noreferrer')} 
+                />
             </div>
         </div>
     )
@@ -87,14 +105,15 @@ function CustomCard({title, img, desc, link}: project) {
 
 export default function ProjectSldier() {
     const settings = {
-        className: "w-[90vw] py-2",
+        className: "w-5/6",
+        dots: true,
         centerMode: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
         focusOnSelect: true,
-        autoplay: true,
-        autoplaySpeed: 3000,
+        //autoplay: true,
+        //autoplaySpeed: 3000,
         pauseOnHover: true,
         responsive: [
             {
@@ -111,6 +130,7 @@ export default function ProjectSldier() {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+
                 }
             }
         ]
