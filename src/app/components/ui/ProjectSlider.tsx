@@ -2,6 +2,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import useResponsiveIconSize from "@/app/hooks/useResponsiveIconSize";
+import ScrollFloatUp from "../ScrollFloatUp";
 
 type project = {
     id: number,
@@ -25,7 +26,7 @@ const projects: project[] = [
             width: 2560,
             height: 1300,
         },
-        link: "https://top-admin-dashboard-officialchanhens-projects.vercel.app/",
+        link: "https://top-admin-dashboard-iota.vercel.app/",
         desc: "A clean portfolio-style homepage showcasing your GitHub repositories, project descriptions, and links, presented with a simple responsive layout.",
         color: "#FCF5C7",
     },
@@ -37,7 +38,7 @@ const projects: project[] = [
             width: 2560,
             height: 1301,
         },
-        link: "https://top-signup-page-officialchanhens-projects.vercel.app/",
+        link: "https://top-signup-page.vercel.app/",
         desc: "A minimalist registration form that collects username, email, and password, with a submit button.",
         color: "linear-gradient(225deg, rgb(12, 30, 127) 0%, rgb(96, 40, 149) 40%, rgb(210, 39, 121) 80%, rgb(255, 0, 142) 100%)",
     },
@@ -49,7 +50,7 @@ const projects: project[] = [
             width: 700,
             height: 900,
         },
-        link: "https://calculator-officialchanhens-projects.vercel.app/",
+        link: "https://calculator-kappa-lake-67.vercel.app/",
         desc: "An interactive web app that performs basic arithmetic operations—addition, subtraction, multiplication, and division—with a clean, button-based interface.",
         color: "#ffffff",
     },
@@ -61,7 +62,7 @@ const projects: project[] = [
             width: 700,
             height: 900,
         },
-        link: "https://sketch-pad-officialchanhens-projects.vercel.app/",
+        link: "https://sketch-pad-one.vercel.app/",
         desc: "A canvas-based drawing app where users can draw freehand lines using mouse or touch input, choose colors, and clear their sketches.",
         color: "#ffffff",
     },
@@ -105,7 +106,6 @@ function CustomCard({title, img, desc, link}: project) {
 
 export default function ProjectSldier() {
     const settings = {
-        className: "w-5/6",
         slidesToShow: 3,
         dots: true,
         centerMode: true,
@@ -147,10 +147,12 @@ export default function ProjectSldier() {
     };
 
     return(
-        <Slider {...settings}>
-            {projects.map(project =>
-                <CustomCard key={project.id} {...project}/>
-            )}
-        </Slider>
+        <ScrollFloatUp className="w-5/6">
+            <Slider {...settings}>
+                {projects.map(project =>
+                    <CustomCard key={project.id} {...project}/>
+                )}
+            </Slider>
+        </ScrollFloatUp>
     );
 }

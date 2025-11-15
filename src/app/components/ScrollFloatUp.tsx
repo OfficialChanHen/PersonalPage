@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 export default function ScrollFloatUp({ className, children 
 
 }: Readonly<{
-    className: string;
+    className?: string;
     children: React.ReactNode;
 }>) {
     const ref = useRef<null | HTMLDivElement>(null);
