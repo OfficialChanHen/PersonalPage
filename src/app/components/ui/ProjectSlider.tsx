@@ -82,7 +82,7 @@ function CustomCard({title, img, desc, link}: project) {
         <div 
             className="group flex flex-col justify-center items-center mx-5 h-[60vh] rounded-lg drop-shadow-lg overflow-hidden transition-transform transform duration-700 ease-in-out hover:scale-110"
         >
-            <div className="relative flex-2 min-w-full">
+            <div className="relative flex-2 w-full">
                 <Image 
                     src={img.imgOrigin} 
                     alt={desc} fill 
@@ -91,8 +91,8 @@ function CustomCard({title, img, desc, link}: project) {
                 />
             </div>
             <div className="flex flex-1 flex-col w-full justify-start items-center gap-2 p-5 bg-indigodye text-parchment transition-colors transition-color transform duration-700 ease-in-out group-hover:bg-pictonblue">
-                <span className="text-center text-lg sm:text-xl"><u>{title}</u></span>
-                <span className="text-left text-xs sm:text-md md:text-lg">{desc}</span>
+                <span className="text-center text-lg sm:text-xl w-full"><u>{title}</u></span>
+                <span className="text-left text-xs sm:text-md md:text-lg w-full">{desc}</span>
                 <IoIosArrowDroprightCircle 
                     className="self-end mt-auto" 
                     size={iconSize} 
@@ -106,31 +106,41 @@ function CustomCard({title, img, desc, link}: project) {
 export default function ProjectSldier() {
     const settings = {
         className: "w-5/6",
+        slidesToShow: 3,
         dots: true,
         centerMode: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
         focusOnSelect: true,
-        //autoplay: true,
-        //autoplaySpeed: 3000,
+        autoplay: true,
+        autoplaySpeed: 4000,
         pauseOnHover: true,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1200,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    dots: true,
+                    centerMode: true,
                     infinite: true,
-                    dots: true
+                    speed: 500,
+                    focusOnSelect: true,
+                    autoplay: true,
+                    autoplaySpeed: 4000,
+                    pauseOnHover: true,
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 900,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1,
-
+                    infinite: true,
+                    centerMode: true,
+                    speed: 500,
+                    focusOnSelect: true,
+                    autoplay: true,
+                    autoplaySpeed: 4000,
+                    pauseOnHover: true,
                 }
             }
         ]

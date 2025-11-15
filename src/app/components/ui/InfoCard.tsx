@@ -3,6 +3,7 @@
 import useResponsiveIconSize from "@/app/hooks/useResponsiveIconSize";
 import { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import ScrollFloatUp from "../ScrollFloatUp";
 
 export default function InfoCard() {
     const [isBackside, setIsBackside] = useState(false);
@@ -19,7 +20,7 @@ export default function InfoCard() {
     });
 
     return(
-        <div className="my-auto
+        <ScrollFloatUp className="my-auto
                         aspect-[6/4] w-1/3 sm:aspect-[5/3] sm:w-2/3 max-w-[500px] min-w-[300px] max-h-[80vh]
                         perspective-[1000px]">
           <div 
@@ -63,6 +64,6 @@ export default function InfoCard() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollFloatUp>
     )
 }

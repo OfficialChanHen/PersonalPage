@@ -7,6 +7,7 @@
   --color-parchment: #F4EBCD;
   --color-mantis: #71B26D;
   --color-asparagus: #679436;
+  --animate-fadein:fadein 1s ease-out fowards;
 }
 
 .slick-track {
@@ -25,4 +26,30 @@
 .slick-arrow.slick-next:hover:before {
   @apply text-honolulublue;
   color: #0077B6
+}
+
+@keyframes float-up {
+  0% { 
+    transform: translateY(300px); 
+  }
+  100% { 
+    transform: translateY(0px); 
+  }
+}
+
+.animate-float-up {
+  animation: float-up 1s ease-in-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-out;
 }
