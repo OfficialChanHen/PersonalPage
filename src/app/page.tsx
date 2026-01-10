@@ -49,7 +49,7 @@ export default function Home() {
         <div className="w-full min-h-screen flex flex-col justify-center items-center gap-4 py-4" ref={resumeRef}>
           <SectionButton up={true} label={"Projects"} buttonAction={scrollToProjects}/>
             <ScrollFloatUp className="relative aspect-[8.5/11] w-2/3 max-w-[650px] my-auto drop-shadow-xl/40">
-              <Image src="/Official-Resume.png" alt="Resume" fill/>
+              <Image src="/Official-Resume-011025.png" alt="Resume" fill/>
             </ScrollFloatUp>
         </div>
       </ScrollFadeIn>
