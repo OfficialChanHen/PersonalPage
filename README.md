@@ -4,7 +4,7 @@ My first personal portfolio website — a static page built to showcase my proje
 
 🔗 **[View Live](https://portfolio-five-blue.vercel.app/)**
 
-![Portfolio Screenshot](example.png)
+![Portfolio Screenshot](legacy-portfolio.png)
 
 ---
 
