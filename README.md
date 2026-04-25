@@ -27,6 +27,7 @@ This is the original version of my portfolio, built before I transitioned to my 
 - [React](https://react.dev)
 - [Next.js](https://nextjs.org)
 - [Tailwind CSS](https://tailwindcss.com)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ---
 
