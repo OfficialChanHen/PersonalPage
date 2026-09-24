@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { DM_Serif_Text } from "next/font/google";
 
 const dmSerifText = DM_Serif_Text({ 

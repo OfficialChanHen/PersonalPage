@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import Slider from "react-slick";
-import { IoIosArrowDroprightCircle } from "react-icons/io";
-import useResponsiveIconSize from "@/app/hooks/useResponsiveIconSize";
+import { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { type Swiper as SwiperType } from "swiper";
+import { IoIosArrowBack, IoIosArrowForward, IoIosArrowDroprightCircle } from "react-icons/io";
 import ScrollFloatUp from "../ScrollFloatUp";
 
 type project = {
@@ -71,88 +74,103 @@ const projects: project[] = [
 
 
 
-function CustomCard({title, img, desc, link}: project) {
-    const iconSize = useResponsiveIconSize({
-        base: 18,
-        sm: 20,
-        md: 22,
-        lg: 24,
-    });
-
-    return(
-        <div 
-            className="group flex flex-col justify-center items-center mx-5 h-[60vh] rounded-lg drop-shadow-lg overflow-hidden transition-transform transform duration-700 ease-in-out hover:scale-110"
+function CustomCard({ title, img, desc, link, isActive }: project & { isActive: boolean }) {
+    return (
+        <div
+            className={`group relative w-full h-[clamp(320px,60vh,650px)] rounded-2xl overflow-hidden drop-shadow-lg cursor-pointer transition-all duration-500
+                ${isActive ? "scale-100 opacity-100" : "scale-90 opacity-50"}`}
         >
-            <div className="relative flex-2 w-full">
-                <Image 
-                    src={img.imgOrigin} 
-                    alt={desc} fill 
-                    style={{objectFit: "cover"}} 
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
-                />
-            </div>
-            <div className="flex flex-1 flex-col w-full justify-start items-center gap-2 p-5 bg-indigodye text-parchment transition-colors transition-color transform duration-700 ease-in-out group-hover:bg-pictonblue">
-                <span className="text-center text-lg sm:text-xl w-full"><u>{title}</u></span>
-                <span className="text-left text-xs sm:text-md md:text-lg w-full">{desc}</span>
-                <IoIosArrowDroprightCircle 
-                    className="self-end mt-auto" 
-                    size={iconSize} 
-                    onClick={() => window.open(`${link}`, '_blank', 'noopener noreferrer')} 
-                />
+            <Image
+                src={img.imgOrigin}
+                alt={title}
+                fill
+                style={{ objectFit: "cover", objectPosition: "top" }}
+                sizes="(max-width: 640px) 90vw, 500px"
+                className="transition-transform duration-700 ease-in-out group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-indigodye via-indigodye/40 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 text-parchment">
+                <span className="text-xl sm:text-2xl"><u>{title}</u></span>
+                <span
+                    className={`text-sm sm:text-base transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`}
+                >
+                    {desc}
+                </span>
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={(e) => { if (!isActive) e.preventDefault(); }}
+                    className={`self-end inline-flex items-center gap-2 px-4 py-2 rounded-full bg-parchment text-indigodye text-sm sm:text-base transition-all duration-300 hover:bg-pictonblue hover:text-parchment
+                        ${isActive ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                >
+                    View Project
+                    <IoIosArrowDroprightCircle size={20} />
+                </a>
             </div>
         </div>
-    )
+    );
 }
 
 export default function ProjectSldier() {
-    const settings = {
-        slidesToShow: 3,
-        dots: true,
-        centerMode: true,
-        infinite: true,
-        speed: 500,
-        focusOnSelect: true,
-        autoplay: true,
-        autoplaySpeed: 4000,
-        pauseOnHover: true,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                    dots: true,
-                    centerMode: true,
-                    infinite: true,
-                    speed: 500,
-                    focusOnSelect: true,
-                    autoplay: true,
-                    autoplaySpeed: 4000,
-                    pauseOnHover: true,
-                }
-            },
-            {
-                breakpoint: 900,
-                settings: {
-                    slidesToShow: 1,
-                    infinite: true,
-                    centerMode: true,
-                    speed: 500,
-                    focusOnSelect: true,
-                    autoplay: true,
-                    autoplaySpeed: 4000,
-                    pauseOnHover: true,
-                }
-            }
-        ]
-    };
+    const swiperRef = useRef<SwiperType | null>(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    return(
-        <ScrollFloatUp className="w-5/6">
-            <Slider {...settings}>
-                {projects.map(project =>
-                    <CustomCard key={project.id} {...project}/>
-                )}
-            </Slider>
+    const navButtonStyle = "flex items-center justify-center w-11 h-11 rounded-full bg-indigodye text-parchment drop-shadow-md hover:bg-pictonblue disabled:opacity-30 disabled:hover:bg-indigodye transition-all duration-200 cursor-pointer disabled:cursor-default";
+
+    return (
+        <ScrollFloatUp className="w-full flex flex-col items-center gap-6">
+            <Swiper
+                onSwiper={(swiper) => { swiperRef.current = swiper; }}
+                onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
+                slidesPerView="auto"
+                centeredSlides={true}
+                spaceBetween={24}
+                grabCursor={true}
+                speed={800}
+                className="w-full !py-4"
+            >
+                {projects.map((project, i) => (
+                    <SwiperSlide
+                        key={project.id}
+                        style={{ width: "clamp(280px, 40vw, 500px)" }}
+                        onClick={() => swiperRef.current?.slideTo(i)}
+                    >
+                        {({ isActive }) => <CustomCard {...project} isActive={isActive} />}
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+
+            {/* Nav buttons */}
+            <div className="flex justify-center items-center gap-4">
+                <button
+                    onClick={() => swiperRef.current?.slidePrev()}
+                    disabled={currentIndex === 0}
+                    aria-label="Previous project"
+                    className={navButtonStyle}
+                >
+                    <IoIosArrowBack size={20} />
+                </button>
+                <div className="flex items-center gap-2">
+                    {projects.map((project, i) => (
+                        <button
+                            key={project.id}
+                            onClick={() => swiperRef.current?.slideTo(i)}
+                            aria-label={`Go to ${project.title}`}
+                            className={`h-2 md:h-3 rounded-full transition-all duration-300 cursor-pointer ${i === currentIndex ? "w-8 md:w-12 bg-indigodye" : "w-2 md:w-3 bg-indigodye/30"}`}
+                        />
+                    ))}
+                </div>
+                <button
+                    onClick={() => swiperRef.current?.slideNext()}
+                    disabled={currentIndex === projects.length - 1}
+                    aria-label="Next project"
+                    className={navButtonStyle}
+                >
+                    <IoIosArrowForward size={20} />
+                </button>
+            </div>
         </ScrollFloatUp>
     );
 }
